@@ -8,6 +8,11 @@ import { UserComponent } from './user/user.component';
 import { TaskComponent } from './task/task.component';
 import { ProjectComponent } from './project/project.component';
 import { ListComponent } from './list/list.component';
+import { HomeComponent } from './home/home.component';
+import { ListService } from './service/list.service';
+import { HttpClientModule } from '@angular/common/http';
+import { EditComponent } from './edit/edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +21,17 @@ import { ListComponent } from './list/list.component';
     UserComponent,
     TaskComponent,
     ProjectComponent,
-    ListComponent
+    ListComponent,
+    HomeComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

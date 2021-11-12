@@ -1,1 +1,15 @@
-<p>list works!</p>
+<div>
+    <div class="listName">
+        <div>{{listName}}</div>
+    </div>
+    <div class="filter">
+        <input type="text" id="filterValue" #filterValue placeholder="enter filter items">
+        <input type="checkbox" id="filter" [checked]="filter"><label for="filter">Filter</label>
+        <input type="checkbox" id="done" [checked]="done"><label for="done">Done</label>
+        <input type="checkbox" id="projects" [checked]="projects" (change)="checkProject($event.target.checked)"><label for="projects">Projects</label>
+    </div>
+    <div class="listDiv">
+        <app-task [hidden]="projects"></app-task>
+        <app-project [hidden]="!projects"></app-project>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div>
+    <app-list [hidden]="!showList"></app-list>
+    <app-edit [hidden]="showList" [parents]="parentProjects"></app-edit>
+    <div class="itemEditFooter" [hidden]="!showList">
+        <button (click)="onClickAdd()">Add</button>
+    </div>
+</div>

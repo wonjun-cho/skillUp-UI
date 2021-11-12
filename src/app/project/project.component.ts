@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ListService } from '../service/list.service';
+import { Task } from '../task.model';
 
 @Component({
   selector: 'app-project',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor() { }
+  projects:Task[] = [];
+
+  constructor(private listService:ListService) { }
 
   ngOnInit(): void {
+    this.getProjects();
+    
   }
 
+  getProjects(){
+    this.listService.getLists().subscribe(result => {
+      result.forEach(project =>{
+        if(project.isproject){
+          this.projects.push(project);
+        }
+      });
+    });
+    
+  }
 }
