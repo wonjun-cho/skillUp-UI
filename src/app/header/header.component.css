@@ -1,0 +1,29 @@
+
+.topnav{
+    /*position: relative;
+    padding-bottom: 2%;
+
+    position: absolute;*/
+    min-height: 111px;
+    background: #22b4ccd4;
+    box-shadow: 0px 2px 0px rgb(0 0 0 / 9%);
+
+
+}
+
+.logoContainer{
+    position:relative;
+    left: 17.36%;
+    right: 71.1%;
+    top: 26.67%;
+    bottom: 27.82%;
+
+
+}
+
+
+ .image{
+     position:relative;
+     padding-left: 18%;
+ }
+
