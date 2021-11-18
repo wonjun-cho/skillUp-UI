@@ -13,6 +13,9 @@ import { ListService } from './service/list.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +26,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectComponent,
     ListComponent,
     HomeComponent,
-    EditComponent
+    EditComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [ListService],
   bootstrap: [AppComponent]
