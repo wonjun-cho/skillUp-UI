@@ -28,4 +28,8 @@ export class ProjectComponent implements OnInit {
     });
     
   }
+
+  getProject(id){
+    console.log(id);
+  }
 }

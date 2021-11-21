@@ -1,5 +1,5 @@
-<div>
-    <div id="taskList" *ngFor="let task of tasks">
+<div class="taskList">
+    <div *ngFor="let task of tasks" (click)="getTask(task.id)">
         T{{task.id}} {{task.title}}
     </div>
 </div>

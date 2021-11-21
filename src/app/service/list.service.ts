@@ -13,6 +13,7 @@ export class ListService {
   constructor(private http:HttpClient) { }
 
   getLists():Observable<Task[]>{
+    console.log("HELLO")
     return this.http.get<Task[]>(this.url +"/task");
   }
 

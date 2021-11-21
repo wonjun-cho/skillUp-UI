@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Input } from '@angular/core';
 import { ListService } from '../service/list.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -22,12 +23,13 @@ export class EditComponent implements OnInit {
 
   @Input() parents:string[];
 
-  constructor(private listService:ListService) { }
+  constructor(private listService:ListService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
     console.log(this.taskForm);
+    this.router.navigate(['home'])
   }
 }

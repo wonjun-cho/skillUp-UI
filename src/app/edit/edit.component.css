@@ -1,0 +1,25 @@
+.title{
+    padding-left:15px;
+    padding-top:3px;
+}
+#titleLabel{
+    font-size: 18px;
+}
+#title{
+    width: 40%;
+}
+.info{
+    padding-left: 25px;
+    display:flex;
+}
+.detailData{
+    width: 40%;
+}
+.labelDetails{
+    display:block;
+}
+#details{
+    height:135px;
+    width:500px;
+    resize:none;
+}

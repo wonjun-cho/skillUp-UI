@@ -1,5 +1,5 @@
-<div>
-    <div id="projectList" *ngFor="let project of projects">
+<div class="projectList" >
+    <div *ngFor="let project of projects" (click)="getProject(project.id)">
         P{{project.id}} {{project.title}}
     </div>
 </div>

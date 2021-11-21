@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,13 @@ export class HomeComponent implements OnInit {
   showList:boolean = true;
   parentProjects:Object[] = [];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onClickAdd(){
-    this.showList = false;
+    this.router.navigate(['edit']);
   }
 
 }

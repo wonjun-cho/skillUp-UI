@@ -25,4 +25,8 @@ export class TaskComponent implements OnInit {
       })
     })
   }
+
+  getTask(id){
+    console.log(id);
+  }
 }
