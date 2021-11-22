@@ -8,28 +8,28 @@ import { Task } from '../task.model';
 })
 export class ListService {
 
-  url:string="http://localhost:3000";
+  url:string="http://localhost:8080";
   tasks:Observable<Task[]>;
   id:number;
   constructor(private http:HttpClient) { }
 
   getLists():Observable<Task[]>{
-    return this.http.get<Task[]>(this.url +"/task");
+    return this.http.get<Task[]>(this.url +"/tasks");
   }
 
   createItems(task:Task){
-    return this.http.post(this.url + "/task", task);
+    return this.http.post(this.url + "/tasks", task);
   }
 
   updateItems(task:Task){
-    return this.http.put(this.url + `/task/${task.id}`, task);
+    return this.http.put(this.url + `/tasks/${task.id}`, task);
   }
 
   delItem(id:number){
-    return this.http.delete(this.url + `/task/${id}`);
+    return this.http.delete(this.url + `/tasks/${id}`);
   }
 
   getItem(id:number){
-    return this.http.get<Task>(this.url + `/task/${id}`)
+    return this.http.get<Task>(this.url + `/tasks/${id}`)
   }
 }
