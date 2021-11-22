@@ -4,18 +4,18 @@
     </div>
     <div class="filter">
         <div class="filterInput">
-            <input type="text" id="filterValue" #filterValue placeholder="enter filter items">
-            <input type="checkbox" id="filter" [checked]="filter"><label for="filter">Filter</label>
-            <input type="checkbox" id="done" [checked]="done"><label for="done">Done</label>
+            <input type="text" id="filterValue" [(ngModel)]="filterValue" placeholder="enter filter items">
+            <input type="checkbox" id="filter" [checked]="filter" [(ngModel)]="filter"><label for="filter">Filter</label>
+            <input type="checkbox" id="done" [checked]="done" [(ngModel)]="done"><label for="done">Done</label>
             <input type="checkbox" id="projects" [checked]="hideProject" (change)="checkProject($event.target.checked)"><label for="projects">Projects</label>
         </div>
     </div>
     <div class="listDiv">
         <div [hidden]="!hideProject">
             <div class="projectList" >
-                <div *ngFor="let project of projects" (click)="getItem(project.id, 'p', $event)">
+                <div *ngFor="let project of projects | title:filterValue:filter | done:done" (click)="getItem(project.id, 'p', $event)">
                     <div id=p{{project.id}}>P{{project.id}} {{project.title}}</div>
-                    <div *ngFor="let taskFromProject of getTaskFromProject(project.id)" (click)="getItem(taskFromProject.id, 'tp', $event)">
+                    <div *ngFor="let taskFromProject of getTaskFromProject(project.id) | title:filterValue:filter | done:done" (click)="getItem(taskFromProject.id, 'tp', $event)">
                         <div id=tp{{taskFromProject.id}}>&nbsp;&nbsp;T{{taskFromProject.id}} {{taskFromProject.title}}</div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         </div>
         <div [hidden]="hideProject">
             <div class="taskList">
-                <div *ngFor="let task of tasks" (click)="getItem(task.id, 't', $event)">
+                <div *ngFor="let task of tasks | title:filterValue:filter | done:done" (click)="getItem(task.id, 't', $event)">
                     <div id=t{{task.id}}>T{{task.id}} {{task.title}}</div>
                 </div>
             </div>

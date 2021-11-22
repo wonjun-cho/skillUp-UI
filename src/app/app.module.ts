@@ -19,6 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { TitlePipe } from './title.pipe';
+import { DonePipe } from './done.pipe';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     EditComponent,
     LoginComponent,
     LandingPageComponent,
-    FooterComponent
+    FooterComponent,
+    TitlePipe,
+    DonePipe
   ],
   imports: [
     BrowserModule,
