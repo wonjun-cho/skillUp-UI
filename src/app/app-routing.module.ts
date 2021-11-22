@@ -10,10 +10,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/splash', pathMatch: 'full' },
   { path: 'splash', component: LandingPageComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'edit/:id', component: EditComponent}
-  // { path: 'home', component: HomeComponent, canActivate:[AuthService]},
-  // { path: 'edit/:id', component: EditComponent, canActivate:[AuthService]}
+  // { path: 'home', component: HomeComponent},
+  // { path: 'edit/:id', component: EditComponent}
+  { path: 'home', component: HomeComponent, canActivate:[AuthService]},
+  { path: 'edit/:id', component: EditComponent, canActivate:[AuthService]}
 ];
 
 @NgModule({
