@@ -1,10 +1,10 @@
 export class Task {
     id:number;
-    title:string;
-    details:string;
-    when:Date;
+    title:string = "";
+    details:string = "";
+    when:Date = new Date();
     deadline:Date;
-    isproject:boolean;
-    parent:number;
-    done:boolean;
+    isproject:boolean = true;
+    parent:number = -1;
+    done:boolean = false;
 }

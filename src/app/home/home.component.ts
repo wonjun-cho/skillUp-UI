@@ -8,16 +8,9 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  showList:boolean = true;
-  parentProjects:Object[] = [];
-
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-  }
-
-  onClickAdd(){
-    this.router.navigate(['edit']);
   }
 
 }

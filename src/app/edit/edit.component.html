@@ -17,12 +17,12 @@
                 </p>
                 <p>
                     <label for="isproject">Project? </label>
-                    <input type="checkbox" id="isproject" name="isproject" formControlName="isproject">
+                    <input type="checkbox" id="isproject" name="isproject" formControlName="isproject" [(ngModel)]="disableParent" (change)="checkProject()">
                 </p>
                 <p [hidden]="">
                     <label for="parent">Parent? </label>
-                    <select [id]="">
-                        <option *ngFor="let parent of parents" [value]="parent.id" formControlName="parent">{{parent.title}}</option>
+                    <select formControlName="parent">
+                        <option *ngFor="let parent of parents" [value]="parent.id" >{{parent.title}}</option>
                     </select>
                 </p>
                 <p>
@@ -47,6 +47,7 @@
         </div>
         <p>
             <button type="submit">Save</button>
+            <button (click)="onCancel()">Cancel</button>
         </p>
     </form>
 </div>

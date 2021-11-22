@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Input } from '@angular/core';
 import { ListService } from '../service/list.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Task } from '../task.model';
 
 @Component({
   selector: 'app-edit',
@@ -21,15 +22,55 @@ export class EditComponent implements OnInit {
     details:new FormControl()
   });
 
-  @Input() parents:string[];
+  parents :Task[];
 
-  constructor(private listService:ListService, private router:Router) { }
+  id:number;
+  disableParent:boolean = false;
+
+  constructor(private listService:ListService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.id = Number.parseInt(params.get('id'));
+      this.listService.getItem(this.id).pipe().subscribe(task => {
+        if(!task.isproject){
+          this.listService.getLists().subscribe(data => {
+            this.parents = data.filter(project => {
+              return project.isproject;
+            });
+          });
+        }else{
+          this.parents = [];
+        }
+        this.taskForm.patchValue(task);
+      })
+    });
+
   }
 
   onSubmit(){
-    console.log(this.taskForm);
-    this.router.navigate(['home'])
+    let task = this.taskForm.value;
+    task.id = this.id;
+
+    this.listService.updateItems(task).subscribe(d => {
+      alert("Successfully updated");
+      this.router.navigate(['home']);
+    });
+  }
+
+  onCancel(){
+    this.router.navigate(['home']);
+  }
+
+  checkProject(){
+    if(this.disableParent){
+      this.parents = [];
+    }else{
+      this.listService.getLists().subscribe(data => {
+        this.parents = data.filter(project => {
+          return project.isproject;
+        })
+      })
+    }
   }
 }

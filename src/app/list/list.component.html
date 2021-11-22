@@ -7,11 +7,32 @@
             <input type="text" id="filterValue" #filterValue placeholder="enter filter items">
             <input type="checkbox" id="filter" [checked]="filter"><label for="filter">Filter</label>
             <input type="checkbox" id="done" [checked]="done"><label for="done">Done</label>
-            <input type="checkbox" id="projects" [checked]="projects" (change)="checkProject($event.target.checked)"><label for="projects">Projects</label>
+            <input type="checkbox" id="projects" [checked]="hideProject" (change)="checkProject($event.target.checked)"><label for="projects">Projects</label>
         </div>
     </div>
     <div class="listDiv">
-        <app-task [hidden]="projects"></app-task>
-        <app-project [hidden]="!projects"></app-project>
+        <div [hidden]="!hideProject">
+            <div class="projectList" >
+                <div *ngFor="let project of projects" (click)="getItem(project.id, 'p', $event)">
+                    <div id=p{{project.id}}>P{{project.id}} {{project.title}}</div>
+                    <div *ngFor="let taskFromProject of getTaskFromProject(project.id)" (click)="getItem(taskFromProject.id, 'tp', $event)">
+                        <div id=tp{{taskFromProject.id}}>&nbsp;&nbsp;T{{taskFromProject.id}} {{taskFromProject.title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [hidden]="hideProject">
+            <div class="taskList">
+                <div *ngFor="let task of tasks" (click)="getItem(task.id, 't', $event)">
+                    <div id=t{{task.id}}>T{{task.id}} {{task.title}}</div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<div class="itemEditFooter">
+    <button class="footerItems" (click)="onClickAdd(itemTitle)">Add</button>
+    <input class="footerItems titleInput" type="text" placeholder="enter task text" [(ngModel)]="itemTitle">
+    <button class="footerItems" (click)="onClickEdit()" [disabled]="!hasId">Edit</button>
+    <button class="footerItems" (click)="onClickRemove()" [disabled]="!hasId">Remove</button>
 </div>

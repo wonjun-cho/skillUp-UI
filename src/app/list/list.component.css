@@ -1,5 +1,4 @@
 .filter{
-    width:100%;
     height:30px;
     padding-left: 15px;
     background-color: lightgray;
@@ -13,4 +12,19 @@
     height:300px;
     overflow-y: scroll;
     outline: 1px solid;
+}
+
+.itemEditFooter{
+    padding-left:15px;
+    padding-top:3px;
+    padding-bottom: 3px;
+    background-color: lightgray;
+}
+
+.footerItems{
+    margin-right:5px;
+}
+
+.titleInput{
+    width:25%;
 }
